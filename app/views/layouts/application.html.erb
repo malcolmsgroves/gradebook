@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+    <ul>
+      <% if current_user.admin %>
+      <li><a href=<%= admin_index_path %>>Course Listing</a></li>
+      <% end%>
+      
+      <% if current_user.teacher %>
+      <li><a href=<%= teacher_index_path %>>Courses I Teach</a></li>
+      <% end %>
+      
+      <li><a href=<%= student_index_path %>>Courses I Take</a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "Change Password", edit_user_registration_path %></li>
+    </ul>
+    <% else %>
+    <%= link_to "Sign In", new_user_session_path %>
+    <% end %>
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

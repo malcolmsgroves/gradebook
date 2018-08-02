@@ -1,0 +1,9 @@
+$('table').append(<tr><td>" +
+<%= @student.first_name %> +
+"</td><td>" +
+<%= @student.last_name %> +
+"</td><td>" +
+<%= link_to @grade.grade, edit_grade_path(@grade) %> + 
+"</td><td>" +
+<%= link_to "X", grade_path(grade), method: :delete, remote: true %> +
+"</td></tr>");

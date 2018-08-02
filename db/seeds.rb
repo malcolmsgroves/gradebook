@@ -11,12 +11,37 @@
     password: "password",
     password_confirmation: 'password',
     first_name: Faker::Name.first_name(),
-    last_name: Faker::Name.last_name())
+    last_name: Faker::Name.last_name(),
+    teacher: true)
   (0...4).each do |y|
     teacher.taught_courses.create!(
       name: Faker::Book.title())
   end
 end
+
+
+headmaster = User.create!(
+  email: "master@school.edu",
+  password: "password",
+  password_confirmation: "password",
+  first_name: "Brad",
+  last_name: "Bates",
+  admin: true,
+  teacher: true)
+
+courses = Course.all.sample(5)
+courses.each do |course|
+  grade = Grade.create!(
+    grade: Faker::Number.between(0, 100),
+    course_id: course.id,
+    student_id: headmaster.id)
+end
+
+(0...4).each do |y|
+  headmaster.taught_courses.create!(
+    name: Faker::Book.title())
+end
+
 
 all_courses = Course.all
 
@@ -36,3 +61,7 @@ all_courses = Course.all
       student_id: student.id)
   end
 end
+
+
+
+

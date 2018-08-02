@@ -1,0 +1,7 @@
+<div>
+  <%= form_for(@grade) do |form| %>
+  <%= label_tag(:grade, "#{@student.first_name} #{@student.last_name}'s grade in #{@course.name}:") %>
+  <%= text_field_tag(:grade) %>
+  <%= submit_tage("Update") %>
+  <% end %>
+</div>

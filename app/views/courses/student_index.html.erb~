@@ -1,0 +1,14 @@
+<div>
+  <table>
+    <tr>
+      <th><strong>Course</strong></th>
+      <th><strong>Grade</strong></th>
+    </tr>
+    <% @grades.each do |grade| %>
+    <tr>
+      <td><%= grade.course.name %></td>
+      <td><%= grade.grade %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

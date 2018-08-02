@@ -1,0 +1,16 @@
+<div>
+  <table>
+    <tr>
+      <th><strong>Course</strong></th>
+      <th><strong>Enrollment</strong></th>
+      <th><strong>Average Grade</strong></th>
+    </tr>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%= course[0] %></td>
+      <td><%= course[1] %></td>
+      <td><%= course[2].round(1) %></td>
+    </tr>
+    <% end %>
+  </table
+</div>

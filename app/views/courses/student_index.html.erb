@@ -1,0 +1,18 @@
+<div>
+  <div><%= "#{@current_user.first_name} #{@current_user.last_name}" %></div>
+  <div>ID: <%= @current_user.id %></div>
+  <div>GPA: <%= @gpa %></div>
+  <table>
+    <tr>
+      <th><strong>Course</strong></th>
+      <th><strong>Grade</strong></th>
+    </tr>
+    
+    <% @grades.each do |grade| %>
+    <tr>
+      <td><%= grade.course.name %></td>
+      <td><%= grade.grade %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

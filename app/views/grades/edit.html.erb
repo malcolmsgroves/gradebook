@@ -1,0 +1,7 @@
+<div>
+  <%= form_for(@grade) do |form| %>
+  <%= label_tag(:grade, "#{@student.first_name} #{@student.last_name}'s grade in #{@course.name}:") %>
+  <%= number_field_tag(:grade, @grade.grade, min: 0, max: 100) %>
+  <%= submit_tag("Update") %>
+  <% end %>
+</div>
