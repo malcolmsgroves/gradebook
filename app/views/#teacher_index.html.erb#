@@ -1,0 +1,7 @@
+<div>
+  <ul>
+    <%= @courses.each do |course| %>
+    <a href=<%= teacher_course_path(course)%>>course.name</a>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+teacher:
+        id: 1
+        email: "teacher@teach.com"
+        first_name: "Mr"
+        last_name: "West"
+
+student:
+        id: 2
+        email: "student@student.com"
+        first_name: "John"
+        last_name: "Doe"
+        
