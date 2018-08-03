@@ -5,7 +5,7 @@ A bare-bones Rails application for organizing semester grades. Contains separate
 
 ## Running the gradebook
 * Clone this repository or unzip the tarball.
-* Run ```bundle && rails db:migrate && rails db:seed && rails server```. This will install dependecies, create and migrate the database, seed the database (for aesthetic purposes, since there isn't any real data), and then start the server.
+* Run ```bundle &&  rails db:setup && rails server```. This will install dependecies, create and migrate the database, seed the database (for aesthetic purposes, since there isn't any real data), and then start the server.
 * Once the server is started, you can find the web app at ```localhost:3000```. Here are three possible logins that demonstrate the different possible views based on user type:
 
 **User Type** | **Email** | **Password**
