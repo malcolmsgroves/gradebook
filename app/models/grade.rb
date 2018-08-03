@@ -9,10 +9,12 @@ class Grade < ApplicationRecord
 
   private
   def grade_must_be_within_range
-    if grade < 0
-      errors.add(:grade, "Grade must be greater than 0")
-    elsif(grade > 100)
-      errors.add(:grade, "Grade must be less than 100")
+    if !grade.nil?
+      if (grade < 0)
+        errors.add(:grade, "Grade must be greater than 0")
+      elsif (grade > 100)
+        errors.add(:grade, "Grade must be less than 100")
+      end
     end
   end
 end

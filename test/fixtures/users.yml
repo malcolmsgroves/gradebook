@@ -3,10 +3,17 @@ teacher:
         email: "teacher@teach.com"
         first_name: "Mr"
         last_name: "West"
+        teacher: true
 
 student:
         id: 2
         email: "student@student.com"
         first_name: "John"
         last_name: "Doe"
-        
+
+admin:
+        id: 3
+        email: "master@school.edu"
+        first_name: "John"
+        last_name: "Doe"
+        admin: true

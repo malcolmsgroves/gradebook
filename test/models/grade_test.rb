@@ -29,8 +29,10 @@ class GradeTest < ActiveSupport::TestCase
     course = teacher.taught_courses.create!(name: "Math")
     grade = course.grades.build(grade: 3.3, student_id: 2)
     student = User.find(2)
-    assert_equal(student.courses.count, 2) # see tests/fixtures/grades.yml
+    assert_equal(student.courses.count, 2) # see app/tests/fixtures/grades.yml
     assert grade.save!
+    assert_equal(grade.student.first_name, student.first_name)
+    assert_equal(grade.course.name, course.name)
     assert_equal(student.courses.count, 3)
   end
 end

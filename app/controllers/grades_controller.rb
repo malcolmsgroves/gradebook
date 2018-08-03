@@ -1,6 +1,7 @@
 class GradesController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :confirm_correct_teacher, only: [:destroy, :edit, :update]
+  before_action :confirm_teacher, only: [:create]
   def create
     @grade = Grade.new(student_id: params[:student_id], course_id: params[:course_id], grade: 100)
     if @grade.save!
@@ -34,4 +35,21 @@ class GradesController < ApplicationController
     end
   end
 
+  private
+  def confirm_correct_teacher
+    @grade = Grade.find(params[:id])
+    @user = current_user
+    if(@user.id != @grade.course.teacher.id)
+      flash[:alert] = "You are not the teacher for the course"
+      redirect_to root_path
+    end
+  end
+
+  def confirm_teacher
+    @user = current_user
+    if(!current_user.teacher)
+      flash[:alert] = "You are not the teacher for the course"
+      redirect_to root_path
+    end
+  end
 end

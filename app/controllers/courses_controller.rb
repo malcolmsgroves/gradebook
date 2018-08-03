@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :confirm_teacher, only: [:show]
-  before_action :confirm_admin
+  before_action :confirm_admin, only: [:admin_index]
   
   def admin_index
     @courses = Course.all
@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
     @user = current_user
     if !@user.taught_courses.where(id: params[:id]).exists?
       flash[:alert] = "You do not have access to this course since you are not the instructor"
-      redirect_to teacher_index_path
+      redirect_to root_path
     end
   end
 
@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
     @user = current_user
     if !@user.admin
       flash[:alert] = "You do not have access to this resource since you are not an administrator"
-      redirect_to teacher_index_path
+      redirect_to root_path
     end
   end
 end
