@@ -2,12 +2,17 @@ class GradesController < ApplicationController
   before_action :authenticate_user!
   before_action :confirm_correct_teacher, only: [:destroy, :edit, :update]
   before_action :confirm_teacher, only: [:create]
+
+  
   def create
-    @grade = Grade.new(student_id: params[:student_id], course_id: params[:course_id], grade: 100)
-    if @grade.save!
+    @grade = Grade.new(student_id: params[:student_id],
+                       course_id: params[:course_id],
+                       grade: 100)
+    if @grade.save
       redirect_to course_path(@grade.course)
     else
-      flash.now[:error] = @grade.errors.full_messages.to_sentence
+      flash[:error] = @grade.errors.full_messages.to_sentence
+      redirect_to course_path(@grade.course)
     end
   end
 
@@ -36,6 +41,9 @@ class GradesController < ApplicationController
   end
 
   private
+
+  # disallow a user who is not the teacher from
+  # manipulating the course grades
   def confirm_correct_teacher
     @grade = Grade.find(params[:id])
     @user = current_user
@@ -45,6 +53,7 @@ class GradesController < ApplicationController
     end
   end
 
+  # ensure that the current user is a teacher
   def confirm_teacher
     @user = current_user
     if(!current_user.teacher)

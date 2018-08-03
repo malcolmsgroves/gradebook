@@ -11,19 +11,19 @@
 
   <body>
     <% if user_signed_in? %>
-    <ul>
+    <div id="header">
       <% if current_user.admin %>
-      <li><a href=<%= admin_index_path %>>Course Listing</a></li>
+      <li class="header-item"><a href=<%= admin_index_path %>>Course Listing</a></li>
       <% end%>
       
       <% if current_user.teacher %>
-      <li><a href=<%= teacher_index_path %>>Courses I Teach</a></li>
+      <li class="header-item"><a href=<%= teacher_index_path %>>Taught Courses</a></li>
       <% end %>
       
-      <li><a href=<%= student_index_path %>>Courses I Take</a></li>
-      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "Change Password", edit_user_registration_path %></li>
-    </ul>
+      <li class="header-item"><a href=<%= student_index_path %>>My Courses</a></li>
+      <li class="header-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <li class="header-item"><%= link_to "Change Password", edit_user_registration_path %></li>
+    </div>
     <% else %>
     <%= link_to "Sign In", new_user_session_path %>
     <% end %>

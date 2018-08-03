@@ -16,4 +16,10 @@ class CourseTest < ActiveSupport::TestCase
     assert course.save!
     assert_equal(teacher.taught_courses.count, 1)
   end
+
+  test "course listing" do
+    @courses = Course.course_listing
+    assert_equal(@courses[0][1], 1)
+    assert_equal(@courses[1][1], 1)
+  end
 end

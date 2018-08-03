@@ -8,6 +8,8 @@ class Grade < ApplicationRecord
   belongs_to :course
 
   private
+
+  # validate the grade is valid on the 100pt scale
   def grade_must_be_within_range
     if !grade.nil?
       if (grade < 0)

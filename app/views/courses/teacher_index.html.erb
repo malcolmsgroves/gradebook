@@ -1,5 +1,5 @@
 <div>
-  <h2>Courses I Teach</h2>
+  <h3>Courses Taught by <%= "#{@user.first_name} #{@user.last_name}"%></h3>
   <ul>
     <% @courses.each do |course| %>
     <li><a href=<%= course_path(course)%>><%= course.name %></a></li>

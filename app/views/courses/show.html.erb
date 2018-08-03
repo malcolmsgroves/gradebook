@@ -1,21 +1,25 @@
 <div>
+  <h3><%= @course.name %></h3>
+  <div> Taught by <%= "#{@user.first_name} #{@user.last_name}" %></div>
   <table>
-  <tr>
-    <th><strong>First Name</strong></th>
-    <th><strong>Last Name</strong></th>
-    <th><strong>Grade</strong></th>
-    <th><strong>Remove</strong></th>
-  </tr>
-  <% @grades.each do |grade| %>
-  <tr id=<%= "id_#{grade.id}" %>>
-    <td><%= grade.student.first_name %></td>
-    <td><%= grade.student.last_name %></td>
-    <td><%= link_to grade.grade, edit_grade_path(grade) %></td>
-    <td><%= link_to "X", grade_path(grade), method: :delete, remote: true %></td>
-  </tr>
-  <% end %>
+    <tr>
+      <th><strong>ID</strong></th>
+      <th><strong>First Name</strong></th>
+      <th><strong>Last Name</strong></th>
+      <th><strong>Grade</strong></th>
+      <th><strong>Remove</strong></th>
+    </tr>
+    <% @grades.each do |grade| %>
+    <tr id=<%= "id_#{grade.id}" %>>
+      <td><%= grade.student.id %></td>
+      <td><%= grade.student.first_name %></td>
+      <td><%= grade.student.last_name %></td>
+      <td><%= link_to grade.grade, edit_grade_path(grade) %></td>
+      <td><%= link_to "X", grade_path(grade), method: :delete, remote: true %></td>
+    </tr>
+    <% end %>
   </table>
-  <%= form_with(model: @grade, url: grades_path) do |form| %>
+  <%= form_for(:grade, url: grades_path) do |form| %>
   <div><strong>Add New Student</strong></div>
   <%= hidden_field_tag(:course_id, @course.id) %>
   <%= label_tag(:student_id, "Student ID:") %>
