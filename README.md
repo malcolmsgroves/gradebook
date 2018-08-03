@@ -3,6 +3,16 @@
 
 A bare-bones Rails application for organizing semester grades. Contains separate views for administrators, teachers, and students. Teachers are able to manage their class rosters as well as change their students' grades. Below are some short notes on this project that might be helpful to read before the review.
 
+## Running the gradebook
+* Clone this repository or unzip the tarball.
+* Run ```bundle && rails db:migrate && rails db:seed && rails server```. This will install dependecies, create and migrate the database, seed the database (for aesthetic purposes, since there isn't any real data), and then start the server.
+* Once the server is started, you can find the web app at ```localhost:3000```. Here are three possible logins that demonstrate the different possible views based on user type:
+**User Type** | **Email**    | **Password**
+--------------|--------------|------------
+student       | student0@school.edu | password
+teacher       | teacher0@school.edu | password
+All types (including administrator) | master@school.edu | password
+
 ## Note on the style
 There is little to no styling here since I wanted to focus my time on the aspects of the project that are more relevant to the Application Developer position. However, if you want to see some of my previous styling work, see [here](https://github.com/malcolmsgroves/chess-js) and [here](https://github.com/malcolmsgroves/buck-tagger).
 
